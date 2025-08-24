@@ -28,40 +28,22 @@ function autoPlayCarousel() {
   }, 4000);
 }
 
+
 // Función para descargar CV
 function descargarCV() {
-  // Crear contenido CSV
-  const csvContent = `
-Nombre,Valor
-"Nombre Completo","Diego Sebastián Ramírez"
-"Teléfono","+504 96016258"
-"Email","diegosebastianramirez29@gmail.com"
-"GitHub","https://github.com/SRamirezn29"
-"LinkedIn","https://www.linkedin.com/in/diego-sebastian-ramirez-nolasco-957866285/"
-"Profesión","Desarrollador Full Stack"
-"Experiencia","3+ años en desarrollo web y móvil"
-"Habilidades Principales","Python, Java, Django, Android Studio, Bases de Datos, Redes"
-"Educación","Ingeniería en Sistemas - Universidad José Cecilio del Valle (2025)"
-"Certificaciones","Inglés A1, Bases de Datos"
-"Idiomas","Español (Nativo), Inglés (Intermedio)"
-"Ubicación","Honduras"
-  `.trim();
-
-  // Crear y descargar archivo
-  const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
-  const link = document.createElement("a");
-  const url = URL.createObjectURL(blob);
-
-  link.setAttribute("href", url);
-  link.setAttribute("download", "CV_Diego_Ramirez.csv");
-  link.style.visibility = "hidden";
-
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-
-  // Mostrar mensaje de confirmación
-  alert("¡CV descargado exitosamente!");
+    // Crear enlace temporal
+    const link = document.createElement('a');
+    link.href = 'CV_Diego_Sebastian_Ramirez_Nolasco.pdf';
+    link.download = 'CV_Diego_Sebastian_Ramirez_Nolasco.pdf';
+    link.target = '_blank';
+    
+    // Simular clic
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    // Opcional: Mensaje de confirmación
+    alert('¡CV descargado!');
 }
 
 // Smooth scroll para navegación
