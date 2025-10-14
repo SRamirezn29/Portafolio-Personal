@@ -33,8 +33,8 @@ function autoPlayCarousel() {
 function descargarCV() {
     // Crear enlace temporal
     const link = document.createElement('a');
-    link.href = 'CV_Diego_Sebastian_Ramirez_Nolasco.pdf';
-    link.download = 'CV_Diego_Sebastian_Ramirez_Nolasco.pdf';
+    link.href = 'currículum profesional diego sebastian ramirez nolasco.pdf';
+    link.download = 'currículum profesional diego sebastian ramirez nolasco.pdf';
     link.target = '_blank';
     
     // Simular clic
@@ -251,7 +251,7 @@ function initContactForm() {
                 from_name: name,
                 from_email: email,
                 message: message,
-                to_email: "diegosebastianramirez29@gmail.com",
+                to_email: "nolascosebastian074@gmail.com",
                 reply_to: email,
                 date: new Date().toLocaleDateString('es-HN')
             })
