@@ -542,7 +542,76 @@ body {
   cursor: pointer;
 }
 
-/* Responsive Design */
+/* ===== MEDIA QUERIES ADICIONALES PARA PANTALLAS GRANDES ===== */
+
+/* Pantallas extra grandes (1400px y más) */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+  
+  .section-title {
+    font-size: 3rem;
+  }
+  
+  .profile-description h3 {
+    font-size: 2.5rem;
+  }
+  
+  .profile-description p {
+    font-size: 1.2rem;
+  }
+  
+  .projects-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+  }
+  
+  .carousel-container {
+    max-width: 1000px;
+    padding: 0 60px;
+  }
+  
+  .education-timeline {
+    max-width: 900px;
+  }
+}
+
+/* Pantallas grandes (1200px - 1399px) */
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .container {
+    max-width: 1140px;
+  }
+  
+  .projects-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .carousel-container {
+    max-width: 1000px;
+  }
+}
+
+/* Pantallas medianas-grandes (992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .container {
+    max-width: 960px;
+  }
+  
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .carousel-container {
+    max-width: 900px;
+  }
+  
+  .education-timeline {
+    max-width: 800px;
+  }
+}
+
+/* Responsive Design - Tablets y móviles */
 @media (max-width: 992px) {
   .header-content {
     gap: 1.5rem;
@@ -552,6 +621,10 @@ body {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
+  }
+  
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -607,6 +680,11 @@ body {
   .project-image {
     height: 180px;
   }
+  
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
 }
 
 @media (max-width: 576px) {
@@ -652,5 +730,34 @@ body {
   
   .footer-content {
     flex-direction: column;
+  }
+}
+
+/* ===== MEJORAS ADICIONALES PARA VISUALIZACIÓN ===== */
+
+/* Smooth transitions para todos los cambios */
+* {
+  transition: padding 0.3s ease, margin 0.3s ease;
+}
+
+/* Asegurar que el contenido no se desborde */
+body {
+  overflow-x: hidden;
+}
+
+/* Mejorar la visualización en pantallas muy anchas */
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1400px;
+  }
+  
+  .sobre-mi {
+    padding: 7rem 0 5rem;
+  }
+  
+  .habilidades,
+  .proyectos,
+  .formacion {
+    padding: 5rem 0;
   }
 }

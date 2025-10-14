@@ -215,7 +215,6 @@ function initDevelopmentMessage() {
 }
 
 // Función para manejar el formulario de contacto
-// Función para manejar el formulario de contacto
 function initContactForm() {
     const contactForm = document.getElementById('contact-form');
     
@@ -271,6 +270,161 @@ function initContactForm() {
     }
 }
 
+// ===== NUEVA FUNCIÓN AGREGADA: ADAPTACIÓN AUTOMÁTICA PARA TODAS LAS PANTALLAS =====
+function initResponsiveLayout() {
+  function adjustLayout() {
+    const windowWidth = window.innerWidth;
+    
+    // Ajustar contenedor principal
+    const container = document.querySelectorAll('.container');
+    container.forEach(cont => {
+      if (windowWidth >= 1400) {
+        cont.style.maxWidth = '1320px';
+      } else if (windowWidth >= 1200) {
+        cont.style.maxWidth = '1140px';
+      } else if (windowWidth >= 992) {
+        cont.style.maxWidth = '960px';
+      } else if (windowWidth >= 768) {
+        cont.style.maxWidth = '720px';
+      } else {
+        cont.style.maxWidth = '100%';
+      }
+    });
+
+    // Ajustar sección "Sobre Mí"
+    const sobreMiContent = document.querySelector('.sobre-mi-content');
+    if (sobreMiContent) {
+      if (windowWidth >= 992) {
+        sobreMiContent.style.display = 'flex';
+        sobreMiContent.style.flexDirection = 'row';
+        sobreMiContent.style.justifyContent = 'space-between';
+        sobreMiContent.style.alignItems = 'center';
+      } else if (windowWidth >= 768) {
+        sobreMiContent.style.display = 'flex';
+        sobreMiContent.style.flexDirection = 'column';
+        sobreMiContent.style.alignItems = 'center';
+      }
+    }
+
+    // Ajustar grid de proyectos
+    const projectsGrid = document.querySelector('.projects-grid');
+    if (projectsGrid) {
+      if (windowWidth >= 1200) {
+        projectsGrid.style.gridTemplateColumns = 'repeat(4, 1fr)';
+      } else if (windowWidth >= 992) {
+        projectsGrid.style.gridTemplateColumns = 'repeat(3, 1fr)';
+      } else if (windowWidth >= 768) {
+        projectsGrid.style.gridTemplateColumns = 'repeat(2, 1fr)';
+      } else {
+        projectsGrid.style.gridTemplateColumns = '1fr';
+      }
+    }
+
+    // Ajustar carrusel de habilidades
+    const carouselContainer = document.querySelector('.carousel-container');
+    if (carouselContainer) {
+      if (windowWidth >= 1200) {
+        carouselContainer.style.maxWidth = '1000px';
+        carouselContainer.style.padding = '0 60px';
+      } else if (windowWidth >= 992) {
+        carouselContainer.style.maxWidth = '900px';
+        carouselContainer.style.padding = '0 50px';
+      } else if (windowWidth >= 768) {
+        carouselContainer.style.maxWidth = '700px';
+        carouselContainer.style.padding = '0 40px';
+      }
+    }
+
+    // Ajustar botones del carrusel
+    const carouselBtns = document.querySelectorAll('.carousel-btn');
+    if (windowWidth < 576) {
+      carouselBtns.forEach(btn => {
+        btn.style.width = '35px';
+        btn.style.height = '35px';
+        btn.style.fontSize = '0.9rem';
+      });
+    } else {
+      carouselBtns.forEach(btn => {
+        btn.style.width = '50px';
+        btn.style.height = '50px';
+        btn.style.fontSize = '1.2rem';
+      });
+    }
+
+    // Ajustar timeline de formación
+    const educationTimeline = document.querySelector('.education-timeline');
+    if (educationTimeline) {
+      if (windowWidth >= 992) {
+        educationTimeline.style.maxWidth = '900px';
+      } else if (windowWidth >= 768) {
+        educationTimeline.style.maxWidth = '700px';
+      } else {
+        educationTimeline.style.maxWidth = '100%';
+      }
+    }
+
+    // Ajustar footer
+    const footerContent = document.querySelector('.footer-content');
+    if (footerContent) {
+      if (windowWidth >= 992) {
+        footerContent.style.display = 'grid';
+        footerContent.style.gridTemplateColumns = 'repeat(3, 1fr)';
+        footerContent.style.gap = '3rem';
+      } else if (windowWidth >= 768) {
+        footerContent.style.display = 'grid';
+        footerContent.style.gridTemplateColumns = 'repeat(2, 1fr)';
+        footerContent.style.gap = '2rem';
+      } else {
+        footerContent.style.display = 'flex';
+        footerContent.style.flexDirection = 'column';
+        footerContent.style.gap = '2rem';
+      }
+    }
+
+    // Ajustar tamaño de fuentes para pantallas grandes
+    if (windowWidth >= 1400) {
+      document.querySelectorAll('.section-title').forEach(title => {
+        title.style.fontSize = '3rem';
+      });
+      document.querySelectorAll('.profile-description h3').forEach(h3 => {
+        h3.style.fontSize = '2.5rem';
+      });
+    } else {
+      document.querySelectorAll('.section-title').forEach(title => {
+        title.style.fontSize = '';
+      });
+      document.querySelectorAll('.profile-description h3').forEach(h3 => {
+        h3.style.fontSize = '';
+      });
+    }
+
+    // Ajustar espaciado de secciones
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+      if (windowWidth >= 1200) {
+        section.style.paddingTop = '5rem';
+        section.style.paddingBottom = '5rem';
+      } else if (windowWidth >= 768) {
+        section.style.paddingTop = '4rem';
+        section.style.paddingBottom = '4rem';
+      }
+    });
+  }
+
+  // Ejecutar al cargar
+  adjustLayout();
+
+  // Ejecutar al cambiar tamaño de ventana con debounce
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      adjustLayout();
+    }, 250);
+  });
+}
+// ===== FIN DE LA NUEVA FUNCIÓN =====
+
 // Inicializar todo cuando el DOM esté listo
 document.addEventListener("DOMContentLoaded", () => {
   // Inicializar funcionalidades
@@ -281,6 +435,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initScrollToTop();
   initDevelopmentMessage();
   initContactForm();
+  initResponsiveLayout(); // ← NUEVA FUNCIÓN AGREGADA
 
   // Iniciar auto-play del carrusel solo en desktop
   if (window.innerWidth > 768) {
